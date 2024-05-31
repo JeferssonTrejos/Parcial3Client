@@ -6,9 +6,6 @@ import './index.css';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/'
 
-alert(API_URL)
-
-
 const App = () => {
   const [modules, setModules] = useState([]);
   const [selectModule, setSelectModule] = useState(null);
