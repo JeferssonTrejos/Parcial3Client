@@ -4,7 +4,7 @@ import Aside from './components/Aside';
 import MainContent from './components/MainContent';
 import './index.css';
 
-const API_URL = process.env.API_URL || 'http://localhost:3000/'
+const API_URL = import.meta.env.API_URL || 'http://localhost:3000/'
 
 alert(API_URL)
 const App = () => {
