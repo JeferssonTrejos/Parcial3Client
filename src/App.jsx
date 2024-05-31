@@ -4,6 +4,8 @@ import Aside from './components/Aside';
 import MainContent from './components/MainContent';
 import './index.css';
 
+const API_URL = process.env.API_URL || 'http://localhost:3000/'
+
 const App = () => {
   const [modules, setModules] = useState([]);
   const [selectModule, setSelectModule] = useState(null);
@@ -17,7 +19,8 @@ const App = () => {
   useEffect(() => {
     const fetchModules = async () => {
       try {
-        const response = await axios.get('https://parcial3server.vercel.app/');
+
+        const response = await axios.get(API_URL);
         setModules(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -29,11 +32,11 @@ const App = () => {
   const GetOneModule = async (moduleId, action, cap) => {
     console.log('ID: ' + moduleId, '  action:' + action, '   CAP:' + cap);
     try {
-      const response = await axios.get(`https://parcial3server.vercel.app/${moduleId}`);
+      const response = await axios.get(API_URL + moduleId);
       setSelectModule(response.data);
       changeAction(action)
       setCap(cap)
-      
+
     } catch (error) {
       console.error('Error fetching module:', error);
     }
