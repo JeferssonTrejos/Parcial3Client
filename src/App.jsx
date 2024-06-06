@@ -4,8 +4,6 @@ import Aside from './components/Aside';
 import MainContent from './components/MainContent';
 import './index.css';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/'
-
 const App = () => {
   const [modules, setModules] = useState([]);
   const [selectModule, setSelectModule] = useState(null);
@@ -19,8 +17,7 @@ const App = () => {
   useEffect(() => {
     const fetchModules = async () => {
       try {
-
-        const response = await axios.get(API_URL);
+        const response = await axios.get('http://localhost:3000/api/curso/');
         setModules(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -32,11 +29,11 @@ const App = () => {
   const GetOneModule = async (moduleId, action, cap) => {
     console.log('ID: ' + moduleId, '  action:' + action, '   CAP:' + cap);
     try {
-      const response = await axios.get(API_URL + moduleId);
+      const response = await axios.get(`http://localhost:3000/api/curso/${moduleId}`);
       setSelectModule(response.data);
       changeAction(action)
       setCap(cap)
-
+      
     } catch (error) {
       console.error('Error fetching module:', error);
     }
