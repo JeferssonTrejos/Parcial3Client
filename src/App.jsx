@@ -17,7 +17,7 @@ const App = () => {
   useEffect(() => {
     const fetchModules = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/curso/');
+        const response = await axios.get('https://parcial3server.vercel.app/');
         setModules(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -29,7 +29,7 @@ const App = () => {
   const GetOneModule = async (moduleId, action, cap) => {
     console.log('ID: ' + moduleId, '  action:' + action, '   CAP:' + cap);
     try {
-      const response = await axios.get(`http://localhost:3000/api/curso/${moduleId}`);
+      const response = await axios.get(`https://parcial3server.vercel.app/${moduleId}`);
       setSelectModule(response.data);
       changeAction(action)
       setCap(cap)
